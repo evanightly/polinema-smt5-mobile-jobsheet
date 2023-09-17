@@ -1,4 +1,4 @@
-# p01
+# Praktikum 1
 
 A new Flutter project.
 
