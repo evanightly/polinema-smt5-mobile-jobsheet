@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+
+class Result extends StatelessWidget {
+  const Result(this.result, {super.key});
+
+  final num result;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, bottom: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Hasil",
+            style: TextStyle(fontSize: 20),
+          ),
+          Text(
+            result.toStringAsFixed(1),
+            style: const TextStyle(fontSize: 30),
+          )
+        ],
+      ),
+    );
+  }
+}
