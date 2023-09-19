@@ -21,10 +21,8 @@ class ItemCard extends StatelessWidget {
           foregroundColor: Colors.green,
           child: Icon(Icons.inventory_2),
         ),
-        title: Text(
-          item.name!,
-        ),
-        subtitle: Text(item.price.toString()),
+        title: Text(item.name!),
+        subtitle: Text('Rp.${item.price.toString()}\tStok:${item.stock}'),
         trailing: GestureDetector(
           child: const Icon(Icons.delete),
           onTap: () => deleteData(index),

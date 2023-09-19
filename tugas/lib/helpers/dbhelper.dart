@@ -14,7 +14,7 @@ class DbHelper {
     String path = '${directory.path}item.db';
 
     //create, read databases
-    var itemDatabase = openDatabase(path, version: 4, onCreate: _createDb);
+    var itemDatabase = openDatabase(path, version: 5, onCreate: _createDb);
 
     //mengembalikan nilai object sebagai hasil dari fungsinya
     return itemDatabase;
@@ -23,12 +23,14 @@ class DbHelper {
   //buat tabel baru dengan nama item
   void _createDb(Database db, int version) async {
     await db.execute('''
- CREATE TABLE item (
- id INTEGER PRIMARY KEY AUTOINCREMENT,
- name TEXT,
- price INTEGER
- )
- ''');
+    CREATE TABLE item (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    price INTEGER,
+    stock INTEGER,
+    item_code TEXT
+    )
+    ''');
   }
 
 //select databases
