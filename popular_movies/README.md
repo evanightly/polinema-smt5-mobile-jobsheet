@@ -1,16 +1,10 @@
-# popular_movies
+# The Movie DB Popular Movies
 
-A new Flutter project.
+Shows popular movie from themoviedb API
 
-## Getting Started
+# Screenshot
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Index
+  ![Screenshot_1695175332](https://github.com/evanightly/polinema-flutter-jobsheet-smt-5/assets/58504115/c391f40f-87ea-4d08-8d93-dea8f577e7ec)
+- Movie Details
+  ![Screenshot_1695175375](https://github.com/evanightly/polinema-flutter-jobsheet-smt-5/assets/58504115/48f9851e-83f2-4f1e-8f85-43c26ee939c2)
