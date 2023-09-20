@@ -2,6 +2,10 @@
 
 Shows popular movie from themoviedb API
 
+# Development
+- Duplicate .env.example and rename it to .env
+- Fill in your API Key
+
 # Screenshot
 Index
   <br>
