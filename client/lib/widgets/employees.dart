@@ -16,6 +16,11 @@ class _EmployeesState extends State<Employees> {
 
   List<Employee> employees = [];
 
+  void _showSnackBar(String text) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+  }
+
   void _getEmployees() async {
     Response response = await dio.get('$serverUrl/employees');
     List<Employee> parsedEmployees = [];
@@ -36,6 +41,7 @@ class _EmployeesState extends State<Employees> {
     print(employee.id);
     print(employee.name);
     await employee.delete();
+    _showSnackBar('Employee deleted');
     _getEmployees();
   }
 
@@ -45,6 +51,7 @@ class _EmployeesState extends State<Employees> {
         builder: (context) => const EmployeeForm(),
       ),
     );
+    _showSnackBar('Employee created');
     _getEmployees();
   }
 
@@ -54,6 +61,7 @@ class _EmployeesState extends State<Employees> {
         builder: (context) => EmployeeForm(employee: employee),
       ),
     );
+    _showSnackBar('Employee updated');
     _getEmployees();
   }
 
@@ -65,18 +73,12 @@ class _EmployeesState extends State<Employees> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Employees'),
-        actions: [
-          IconButton(
-            onPressed: _getEmployees,
-            icon: const Icon(Icons.refresh),
-          ),
-          IconButton(onPressed: _onCreateForm, icon: const Icon(Icons.add))
-        ],
-      ),
-      body: Container(
+    Widget content = const Center(child: CircularProgressIndicator());
+
+    if (employees.isEmpty) {
+      content = const Center(child: Text('No employees found'));
+    } else {
+      content = Container(
         margin: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -114,7 +116,17 @@ class _EmployeesState extends State<Employees> {
             ],
           ),
         ),
+      );
+    }
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Employees'),
+        actions: [
+          // IconButton(onPressed: _getEmployees, icon: const Icon(Icons.refresh)),
+          IconButton(onPressed: _onCreateForm, icon: const Icon(Icons.add))
+        ],
       ),
+      body: content,
     );
   }
 }
